@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular Cheatsheets</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+
+    <button id="theme-switcher" title="Change theme">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+    
+    <div class="main-container">
+        <!-- Navigation Menu -->
+        <nav>
+            <ul>
+                <li><button class="nav-button" data-source="data/linux.json">Linux Commands</button></li>
+                <li><button class="nav-button" data-source="data/debian_ubuntu.json">Debian / Ubuntu</button></li>
+                <li><button class="nav-button" data-source="data/git.json">Git Commands</button></li>
+                <li><button class="nav-button" data-source="data/docker.json">Docker Commands</button></li>
+                <li><button class="nav-button" data-source="data/mikrotik.json">MikroTik RouterOS</button></li>
+                <li><button class="nav-button" data-source="data/cisco.json">Cisco</button></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main>
+            <h1 id="cheatsheet-title"></h1>
+            <div id="cheatsheet-container">
+                <!-- Content will be dynamically generated here -->
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

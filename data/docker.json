@@ -1,0 +1,51 @@
+[
+    {
+        "title": "Image Management",
+        "commands": [
+            { "command": "docker pull [image]", "description": "Download an image from a registry (e.g., Docker Hub)." },
+            { "command": "docker images", "description": "List all images stored locally." },
+            { "command": "docker build -t [name:tag] .", "description": "Build an image from a Dockerfile in the current directory." },
+            { "command": "docker rmi [image_id]", "description": "Remove a local image." },
+            { "command": "docker login", "description": "Log in to a Docker registry." }
+        ]
+    },
+    {
+        "title": "Container Lifecycle",
+        "commands": [
+            { "command": "docker run [image]", "description": "Create and start a new container from an image." },
+            { "command": "docker run -d -p 80:80 [image]", "description": "Run in detached mode and map host port 80 to container port 80." },
+            { "command": "docker ps", "description": "List all running containers." },
+            { "command": "docker ps -a", "description": "List all containers, including stopped ones." },
+            { "command": "docker start [container_id]", "description": "Start a stopped container." },
+            { "command": "docker stop [container_id]", "description": "Stop a running container gracefully." },
+            { "command": "docker rm [container_id]", "description": "Remove a stopped container." }
+        ]
+    },
+    {
+        "title": "Inspecting & Debugging",
+        "commands": [
+            { "command": "docker logs [container_id]", "description": "Fetch the logs of a container." },
+            { "command": "docker logs -f [container_id]", "description": "Follow log output in real-time." },
+            { "command": "docker inspect [container_id]", "description": "Display low-level information on a container or image." },
+            { "command": "docker exec -it [container_id] bash", "description": "Execute an interactive bash shell inside a running container." }
+        ]
+    },
+    {
+        "title": "Docker Compose",
+        "commands": [
+            { "command": "docker-compose up", "description": "Create and start all services defined in docker-compose.yml." },
+            { "command": "docker-compose up -d", "description": "Create and start services in the background (detached mode)." },
+            { "command": "docker-compose down", "description": "Stop and remove containers, networks, and volumes." },
+            { "command": "docker-compose ps", "description": "List containers for the current project." },
+            { "command": "docker-compose logs -f", "description": "Follow log output from all services." }
+        ]
+    },
+    {
+        "title": "System & Cleanup",
+        "commands": [
+            { "command": "docker system df", "description": "Show docker disk usage." },
+            { "command": "docker system prune", "description": "Remove all unused data (stopped containers, dangling images, etc.)." },
+            { "command": "docker system prune -a --volumes", "description": "Remove everything unused (use with extreme care!)." }
+        ]
+    }
+]

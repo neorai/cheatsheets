@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+/* --- Color & Theme Variables --- */
+:root {
+    /* Base color palette */
+    --color-blue: #3498db;
+    --color-green: #2ecc71;
+    --color-purple: #9b59b6;
+    --color-orange: #e67e22;
+    --color-red: #e74c3c;
+    --color-teal: #1abc9c;
+    --color-grey: #95a5a6;
+
+    /* Light Theme (default) */
+    --bg-main: #f8f9fa;
+    --text-main: #212529;
+    --border-color: #dee2e6;
+    --code-bg: #e9ecef;
+    --nav-button-bg: #e9ecef;
+    --nav-button-active-bg: var(--color-blue);
+    --nav-button-active-text: #fff;
+}
+
+body.dark-theme {
+    /* Dark Theme */
+    --bg-main: #212529;
+    --text-main: #e9ecef;
+    --border-color: #495057;
+    --code-bg: #343a40;
+    --nav-button-bg: #343a40;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    margin: 0;
+    padding: 2em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Theme Switcher Button --- */
+#theme-switcher {
+    position: fixed; top: 20px; right: 20px; background-color: var(--code-bg); border: 1px solid var(--border-color);
+    border-radius: 50%; width: 45px; height: 45px; cursor: pointer; display: flex; align-items: center;
+    justify-content: center; font-size: 1.2rem; color: var(--text-main); transition: all 0.3s ease;
+    z-index: 1000; overflow: hidden;
+}
+#theme-switcher:hover { transform: scale(1.1); box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+#theme-switcher .fa-sun, #theme-switcher .fa-moon { position: absolute; transition: transform 0.4s ease, opacity 0.4s ease; }
+body.dark-theme .fa-sun { transform: translateY(0) rotate(0deg); opacity: 1; }
+body.dark-theme .fa-moon { transform: translateY(100%) rotate(90deg); opacity: 0; }
+.fa-sun { transform: translateY(-100%) rotate(-90deg); opacity: 0; }
+.fa-moon { transform: translateY(0) rotate(0deg); opacity: 1; }
+
+
+/* ======================================== */
+/* ===         MAIN LAYOUT CHANGES        === */
+/* ======================================== */
+
+/* --- Main Structure --- */
+.main-container {
+    max-width: 1200px; /* Increased max-width for the two-column layout */
+    margin: 0 auto;
+    display: flex; /* The key! This enables Flexbox */
+    gap: 2em;      /* Space between the menu and the content */
+    align-items: flex-start; /* Align items to the top */
+}
+
+/* The main content area will take up the remaining space */
+main {
+    flex: 1; /* Allows this element to grow and fill available space */
+    min-width: 0; /* Fixes potential overflow issues in flex items */
+}
+
+/* --- Navigation Menu (NOW VERTICAL) --- */
+nav {
+    flex: 0 0 220px; /* flex-grow: 0, flex-shrink: 0, flex-basis: 220px */
+    background-color: var(--code-bg);
+    padding: 1em;
+    border-radius: 12px;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Stack the buttons vertically */
+    gap: 10px;
+}
+.nav-button {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--nav-button-bg);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    width: 100%; /* Make the button fill the nav container's width */
+    text-align: left; /* Align button text to the left */
+}
+.nav-button:hover {
+    background-color: var(--color-grey);
+    color: #fff;
+}
+.nav-button.active {
+    background-color: var(--nav-button-active-bg);
+    color: var(--nav-button-active-text);
+}
+
+
+/* --- Content Styles (Unchanged) --- */
+h1 { text-align: center; color: var(--text-main); margin-bottom: 1em; margin-top:0; font-size: 2.5em; }
+.command-group { border: 2px solid; border-radius: 10px; padding: 1.5em 1.5em 1em 1.5em; margin-bottom: 2.5em; position: relative; transition: border-color 0.3s ease; }
+.command-group legend { font-family: 'Lato', sans-serif; font-weight: 700; font-size: 1.2em; padding: 0.3em 1em; border-radius: 8px; color: #fff; margin-left: 1em; }
+.group-blue { border-color: var(--color-blue); } .group-blue legend { background-color: var(--color-blue); }
+.group-green { border-color: var(--color-green); } .group-green legend { background-color: var(--color-green); }
+.group-purple { border-color: var(--color-purple); } .group-purple legend { background-color: var(--color-purple); }
+.group-orange { border-color: var(--color-orange); } .group-orange legend { background-color: var(--color-orange); }
+.group-red { border-color: var(--color-red); } .group-red legend { background-color: var(--color-red); }
+.group-teal { border-color: var(--color-teal); } .group-teal legend { background-color: var(--color-teal); }
+.group-grey { border-color: var(--color-grey); } .group-grey legend { background-color: var(--color-grey); }
+.table-container { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 1em; }
+th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-color); transition: border-color 0.3s ease; }
+thead th { font-weight: 700; color: var(--text-main); }
+tbody tr:last-child td { border-bottom: none; }
+td:first-child { width: 40%; }
+code { font-family: 'Roboto Mono', monospace; background-color: var(--code-bg); padding: 0.2em 0.5em; border-radius: 4px; font-size: 0.95em; color: var(--text-main); transition: background-color 0.3s ease, color 0.3s ease; }
+
+
+/* ======================================== */
+/* ===   RESPONSIVE DESIGN FOR MOBILE   === */
+/* ======================================== */
+@media (max-width: 800px) {
+    .main-container {
+        flex-direction: column; /* Stack the menu and content vertically */
+    }
+
+    nav {
+        flex-basis: auto; /* Allow nav to take its content's height */
+        width: 100%;
+    }
+}

@@ -1,0 +1,39 @@
+[
+    {
+        "title": "System & User Management",
+        "commands": [
+            { "command": "/system identity set name=[RouterName]", "description": "Set the hostname of the router." },
+            { "command": "/system reboot", "description": "Reboot the device." },
+            { "command": "/user print", "description": "List all users and their groups." },
+            { "command": "/user add name=[user] group=[full|read|write] password=[pass]", "description": "Create a new user." },
+            { "command": "/system backup save name=[filename]", "description": "Create a configuration backup file." }
+        ]
+    },
+    {
+        "title": "IP Addressing & Routing",
+        "commands": [
+            { "command": "/ip address print", "description": "List all IP addresses configured on interfaces." },
+            { "command": "/ip address add address=[ip/mask] interface=[ether1]", "description": "Assign an IP address to an interface." },
+            { "command": "/ip route print", "description": "Show the routing table." },
+            { "command": "/ip route add dst-address=0.0.0.0/0 gateway=[gateway_ip]", "description": "Add a default gateway (route)." },
+            { "command": "/ip dns set servers=[dns1],[dns2]", "description": "Configure DNS servers for the router." }
+        ]
+    },
+    {
+        "title": "Firewall & NAT",
+        "commands": [
+            { "command": "/ip firewall filter print", "description": "Show all firewall filter rules." },
+            { "command": "/ip firewall nat print", "description": "Show all NAT rules." },
+            { "command": "/ip firewall filter add chain=input action=drop src-address=[ip]", "description": "Block an incoming source IP address." },
+            { "command": "/ip firewall nat add chain=srcnat action=masquerade out-interface=[wan_if]", "description": "Create a standard source NAT rule for internet access." }
+        ]
+    },
+    {
+        "title": "Wireless (WiFi)",
+        "commands": [
+            { "command": "/interface wireless security-profiles add name=prof1 mode=dynamic-keys authentication-types=wpa2-psk wpa2-pre-shared-key=[key]", "description": "Create a new WPA2 security profile." },
+            { "command": "/interface wireless set [find] mode=ap-bridge ssid=[MySSID] security-profile=prof1", "description": "Set up a basic Access Point (AP)." },
+            { "command": "/interface wireless registration-table print", "description": "Show all currently connected wireless clients." }
+        ]
+    }
+]

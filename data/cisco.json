@@ -1,0 +1,111 @@
+[
+    {
+        "title": "Initial Setup Workflow",
+        "commands": [
+            { "command": "1. Update IOS Firmware", "description": "Ensure the switch is running the latest stable OS version. (See System Maintenance)." },
+            { "command": "2. Set Hostname & IP", "description": "Set a unique hostname and configure management IP on VLAN 1 or a dedicated management VLAN." },
+            { "command": "3. Configure Gateway", "description": "Set the default gateway for remote management." },
+            { "command": "4. Configure Time (NTP)", "description": "Synchronize the clock with a reliable time source." },
+            { "command": "5. Configure SSH & Users", "description": "Secure remote access by enabling SSH and creating admin users." },
+            { "command": "6. Configure Security ACLs", "description": "Restrict management access (SSH/HTTP) to specific trusted networks." }
+        ]
+    },
+    {
+        "title": "Basic Access & Saving Config",
+        "commands": [
+            { "command": "enable", "description": "Enter privileged EXEC mode (enable mode)." },
+            { "command": "configure terminal", "description": "Enter global configuration mode." },
+            { "command": "Switch(config)# hostname [name]", "description": "Set the device hostname." },
+            { "command": "Switch(config)# enable secret [password]", "description": "Set an encrypted password for privileged mode." },
+            { "command": "Switch(config)# banner motd #[message]#", "description": "Set the Message of the Day login banner." },
+            { "command": "Switch# copy running-config startup-config", "description": "Save the active configuration to NVRAM. Shortcuts: `write memory` or `wr`." }
+        ]
+    },
+    {
+        "title": "Viewing Status & System Info",
+        "commands": [
+            { "command": "Switch# show version", "description": "Display IOS version, uptime, and hardware info." },
+            { "command": "Switch# show logging", "description": "Display the system log messages." },
+            { "command": "Switch# show ip interface brief", "description": "Show a summary of interfaces with their IP address and status." },
+            { "command": "Switch# show interfaces status", "description": "Show a one-line summary of all interfaces (connected, speed, duplex, vlan)." },
+            { "command": "Switch# show vlan brief", "description": "Display a summary of all configured VLANs and their assigned ports." },
+            { "command": "Switch# show mac address-table", "description": "Display the switch's MAC address forwarding table to find devices." },
+            { "command": "Switch# show ip arp", "description": "Display the ARP table, mapping IP addresses to MAC addresses." },
+            { "command": "Switch# show running-config", "description": "Display the currently active configuration." },
+            { "command": "Switch# show startup-config", "description": "Display the configuration that will be loaded on boot." },
+            { "command": "Switch# show file systems", "description": "Display storage space (used/free) on flash and other directories." },
+            { "command": "Switch# dir flash:", "description": "List the contents of the flash memory directory." },
+            { "command": "Switch# terminal length 0", "description": "Disable paging for the current session to show all output at once." }
+        ]
+    },
+    {
+        "title": "VLAN Management",
+        "commands": [
+            { "command": "Switch(config)# vlan [id]", "description": "Create a VLAN and enter its config mode. Follow with `name [vlan_name]`." },
+            { "command": "Switch(config)# interface range [type]/[start] - [end]", "description": "Select multiple interfaces to configure at once." },
+            { "command": "Switch(config-if-range)# switchport access vlan [id]", "description": "Assign the selected access ports to a specific VLAN." },
+            { "command": "Switch(config)# no vlan [id]", "description": "Delete a VLAN. Ensure no ports are assigned to it first." }
+        ]
+    },
+    {
+        "title": "Interface Configuration",
+        "commands": [
+            { "command": "Switch(config)# interface [type/number]", "description": "Enter interface configuration mode (e.g., `interface GigabitEthernet0/1`)." },
+            { "command": "Switch(config-if)# description [text]", "description": "Add a descriptive comment to an interface." },
+            { "command": "Switch(config-if)# switchport mode access", "description": "Set the interface to be an access port (for end devices)." },
+            { "command": "Switch(config-if)# switchport mode trunk", "description": "Set the interface to be a trunk port (to another switch)." },
+            { "command": "Switch(config-if)# no shutdown", "description": "Enable the interface (bring it up)." }
+        ]
+    },
+    {
+        "title": "Layer 2 Features (STP & PortFast)",
+        "commands": [
+            { "command": "Switch# show spanning-tree summary", "description": "Check the overall Spanning Tree Protocol status." },
+            { "command": "Switch(config)# spanning-tree vlan [id] priority [value]", "description": "Set the STP priority for a VLAN to influence root bridge election." },
+            { "command": "Switch(config-if)# spanning-tree portfast", "description": "Enable PortFast on an access port to skip STP listening/learning states." },
+            { "command": "Switch(config-if)# no spanning-tree portfast", "description": "Disable PortFast on an interface." }
+        ]
+    },
+    {
+        "title": "Layer 3 Features (Routing & DHCP)",
+        "commands": [
+            { "command": "Switch(config)# ip routing", "description": "Enable Layer 3 routing capabilities on a multilayer switch." },
+            { "command": "Switch(config)# ip default-gateway [ip_address]", "description": "Set the default gateway for a Layer 2 switch (for management traffic)." },
+            { "command": "Switch(config)# interface vlan [id]", "description": "Enter the config for a Switched Virtual Interface (SVI) to give a VLAN an IP." },
+            { "command": "Switch(config-if)# ip address [ip] [mask]", "description": "Assign an IP address to a Layer 3 interface or SVI." },
+            { "command": "Switch(config-if)# ip helper-address [dhcp_server_ip]", "description": "Forward DHCP broadcast requests from this VLAN to a DHCP server." }
+        ]
+    },
+    {
+        "title": "Security (SSH, ACLs, Port Security)",
+        "commands": [
+            { "command": "Switch(config)# username [name] privilege 15 secret [pass]", "description": "Create a local user with full admin rights (privilege 15)." },
+            { "command": "Switch(config)# ip domain-name [domain]", "description": "Set a domain name, required for generating RSA keys." },
+            { "command": "Switch(config)# crypto key generate rsa", "description": "Generate RSA keys to enable SSH." },
+            { "command": "Switch(config)# line vty 0 15", "description": "Enter config mode for virtual terminal lines (for SSH/Telnet)." },
+            { "command": "Switch(config-line)# transport input ssh", "description": "Allow only SSH connections on VTY lines." },
+            { "command": "Switch(config)# access-list [num] permit [ip] [wildcard]", "description": "Create a standard access control list rule to permit traffic." },
+            { "command": "Switch(config-line)# access-class [num] in", "description": "Apply a standard ACL to VTY lines to restrict management access." },
+            { "command": "Switch(config-if)# switchport port-security", "description": "Enable port security on an interface to lock it to a specific MAC address." }
+        ]
+    },
+    {
+        "title": "Monitoring (SNMP & SPAN)",
+        "commands": [
+            { "command": "Switch(config)# snmp-server community [string] RO", "description": "Configure a read-only SNMP community string for monitoring." },
+            { "command": "Switch(config)# monitor session 1 source vlan [id]", "description": "Set the source for a port mirroring (SPAN) session." },
+            { "command": "Switch(config)# monitor session 1 destination interface [id]", "description": "Set the destination interface where mirrored traffic will be sent." },
+            { "command": "Switch# show monitor session 1", "description": "Verify the SPAN session configuration." }
+        ]
+    },
+    {
+        "title": "System Maintenance & Upgrades",
+        "commands": [
+            { "command": "Switch# archive download-sw /overwrite tftp://[ip]/[image.tar]", "description": "Update the IOS from a TFTP server. Add `/reload` to auto-reboot." },
+            { "command": "Switch# erase startup-config", "description": "Delete the saved configuration. `reload` command is needed to factory reset." },
+            { "command": "Switch(config)# clock timezone [zone] [offset]", "description": "Set the local time zone (e.g., `clock timezone CET 1`)." },
+            { "command": "Switch(config)# ntp server [ip_address]", "description": "Configure an NTP server to synchronize the switch's clock." },
+            { "command": "Switch# show clock", "description": "Display the current time and date on the switch." }
+        ]
+    }
+]

@@ -1,0 +1,100 @@
+[
+    {
+        "title": "File & Directory Management",
+        "commands": [
+            { "command": "ls -lah", "description": "List files with details, hidden files, and human-readable sizes." },
+            { "command": "cd [directory]", "description": "Change to the specified directory. (`cd -` goes to previous dir)." },
+            { "command": "pwd", "description": "Show the path of the current working directory." },
+            { "command": "cp -r [source] [destination]", "description": "Copy a file or directory recursively." },
+            { "command": "mv [source] [destination]", "description": "Move or rename a file/directory." },
+            { "command": "rm -r [file/dir]", "description": "Delete a file or directory recursively (use with care!)." },
+            { "command": "mkdir -p [path/to/dir]", "description": "Create a new directory, including parent directories if they don't exist." },
+            { "command": "touch [file]", "description": "Create an empty file or update its timestamp." },
+            { "command": "less [file]", "description": "View a file page by page (use arrow keys to navigate, 'q' to quit)." },
+            { "command": "ln -s /path/to/original /path/to/link", "description": "Create a symbolic link (shortcut) to a file or directory." }
+        ]
+    },
+    {
+        "title": "Text Processing (Pipes & Filters)",
+        "commands": [
+            { "command": "[command1] | [command2]", "description": "Pipe: Sends the output of command1 to the input of command2." },
+            { "command": "[command] > [file]", "description": "Redirect: Writes the output of a command to a file, overwriting it." },
+            { "command": "[command] >> [file]", "description": "Append Redirect: Appends the output of a command to the end of a file." },
+            { "command": "head -n 20 [file]", "description": "Display the first 20 lines of a file." },
+            { "command": "tail -n 20 [file]", "description": "Display the last 20 lines of a file." },
+            { "command": "tail -f [logfile]", "description": "Follow a file in real-time, showing new lines as they are added." },
+            { "command": "sed 's/old/new/g' [file]", "description": "Find and replace text in a file or stream (Stream Editor)." },
+            { "command": "awk '{print $1,$3}' [file]", "description": "A powerful pattern scanning and processing language. This prints the 1st and 3rd columns." },
+            { "command": "wc -l [file]", "description": "Count the number of lines, words, and characters in a file (-l for lines only)." }
+        ]
+    },
+    {
+        "title": "Searching for Files & Content",
+        "commands": [
+            { "command": "find . -name '*.log'", "description": "Find all files ending in .log in the current directory and subdirectories." },
+            { "command": "find . -type f -mtime -7", "description": "Find all files (-type f) modified within the last 7 days (-mtime -7)." },
+            { "command": "find . -size +100M", "description": "Find all files larger than 100 Megabytes." },
+            { "command": "find . -name '*.tmp' -exec rm {} \\;", "description": "Find all .tmp files and execute the `rm` command on each one." },
+            { "command": "grep -r 'pattern' /path/to/dir", "description": "Recursively (-r) search for a text pattern within all files in a directory." },
+            { "command": "locate [name]", "description": "Find files quickly using a pre-built database (run `sudo updatedb` first)." },
+            { "command": "which [command]", "description": "Show the full path of a command (executable) from your $PATH." },
+            { "command": "whereis [command]", "description": "Locate the binary, source, and manual page files for a command." }
+        ]
+    },
+    {
+        "title": "Permissions & Ownership",
+        "commands": [
+            { "command": "sudo [command]", "description": "Execute a command with superuser (administrator) privileges." },
+            { "command": "ls -l [file]", "description": "Show the permissions, owner, and group of a file." },
+            { "command": "chmod u+x [script]", "description": "Symbolic: Give the User (u) execute (x) permission on a file." },
+            { "command": "chmod 755 [file]", "description": "Numeric: Set permissions (Owner=7, Group=5, Others=5). R=4, W=2, X=1." },
+            { "command": "chown [user]:[group] [file]", "description": "Change the owner and group of a file or directory." }
+        ]
+    },
+    {
+        "title": "Disk & Memory Usage",
+        "commands": [
+            { "command": "df -h", "description": "Show disk space usage for all mounted filesystems (human-readable)." },
+            { "command": "df -i", "description": "Show inode usage for all mounted filesystems. (Useful if you can't create new files)." },
+            { "command": "du -sh [directory]", "description": "Show the total size of a specific directory (human-readable)." },
+            { "command": "du -h --max-depth=1 .", "description": "Show the size of each subdirectory within the current location." },
+            { "command": "free -h", "description": "Show RAM and swap memory usage (human-readable)." },
+            { "command": "lsblk", "description": "List block devices (disks and partitions) in a tree-like format." },
+            { "command": "ncdu", "description": "Interactive disk usage analyzer. (May require `sudo apt install ncdu`)." }
+        ]
+    },
+    {
+        "title": "System & Process Management",
+        "commands": [
+            { "command": "ps aux", "description": "Show all currently running processes in detail." },
+            { "command": "htop", "description": "Interactive real-time process monitor (better than 'top')." },
+            { "command": "kill [PID]", "description": "Send a terminate signal to a process by its ID." },
+            { "command": "pkill [process_name]", "description": "Kill a process by its name." },
+            { "command": "[command] &", "description": "Run a command in the background, allowing you to continue using the terminal." },
+            { "command": "nohup [command] &", "description": "Run a command that will continue running even after you log out." },
+            { "command": "uname -a", "description": "Display detailed kernel and system information." },
+            { "command": "lscpu", "description": "Display detailed information about the CPU architecture." },
+            { "command": "uptime", "description": "Show how long the system has been running, and load averages." }
+        ]
+    },
+    {
+        "title": "Networking",
+        "commands": [
+            { "command": "ip addr show", "description": "Show IP addresses and network interfaces." },
+            { "command": "ping [host]", "description": "Check connectivity with a host." },
+            { "command": "curl -O [URL]", "description": "A versatile tool to transfer data. -O saves the file with its original name." },
+            { "command": "ssh [user]@[host]", "description": "Securely connect to a remote system." },
+            { "command": "ss -tulpn", "description": "Show all listening TCP (t) and UDP (u) ports, the process name (p) and without resolving hostnames (n). Successor to netstat." },
+            { "command": "dig [domain.com]", "description": "Perform a DNS lookup to get information about a domain." }
+        ]
+    },
+    {
+        "title": "Compression & Archiving",
+        "commands": [
+            { "command": "tar -czvf archive.tar.gz [dir]", "description": "Compress a directory into a .tar.gz file (create, zip, verbose, file)." },
+            { "command": "tar -xzvf archive.tar.gz", "description": "Extract the contents of a .tar.gz file (extract, zip, verbose, file)." },
+            { "command": "zip -r archive.zip [files]", "description": "Compress files or a directory into a .zip file." },
+            { "command": "unzip archive.zip", "description": "Decompress a .zip file." }
+        ]
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Setup & Basics",
+        "commands": [
+            { "command": "git --version", "description": "Check your installed Git version." },
+            { "command": "git config --global user.name \"[name]\"", "description": "Set your name for all repositories." },
+            { "command": "git config --global user.email \"[email]\"", "description": "Set your email for all repositories." },
+            { "command": "git init [repo-name]", "description": "Initialize a new local Git repository." },
+            { "command": "git clone [url]", "description": "Clone a repository from a remote URL." }
+        ]
+    },
+    {
+        "title": "Staging & Committing",
+        "commands": [
+            { "command": "git status", "description": "Show the status of changes as untracked, modified, or staged." },
+            { "command": "git add [file]", "description": "Add a file to the staging area." },
+            { "command": "git add .", "description": "Add all new and modified files to the staging area." },
+            { "command": "git commit -m \"[message]\"", "description": "Commit the staged changes with a descriptive message." },
+            { "command": "git rm [file]", "description": "Remove a file from the working directory and staging area." }
+        ]
+    },
+    {
+        "title": "Branching & Merging",
+        "commands": [
+            { "command": "git branch", "description": "List all local branches. `*-` indicates the current branch." },
+            { "command": "git branch [branch-name]", "description": "Create a new branch." },
+            { "command": "git checkout [branch-name]", "description": "Switch to another branch." },
+            { "command": "git checkout -b [branch-name]", "description": "Create a new branch and switch to it." },
+            { "command": "git merge [branch-name]", "description": "Merge the specified branch into the current branch." }
+        ]
+    },
+    {
+        "title": "Undoing Changes & Correcting History",
+        "commands": [
+            { "command": "git commit --amend", "description": "Modify the most recent commit. You can change its message and/or add more staged files." },
+            { "command": "git revert HEAD", "description": "Create a new commit that undoes the changes from the last commit. Safe for public history." },
+            { "command": "git reset HEAD~1", "description": "Remove the last commit but keep its changes in your working directory (unstaged)." },
+            { "command": "git reset --soft HEAD~1", "description": "Remove the last commit but keep its changes in the staging area. Useful for recommitting." },
+            { "command": "git reset --hard HEAD~1", "description": "Permanently delete the last commit AND all of its changes. (DANGEROUS: use with care!)." },
+            { "command": "git clean -df", "description": "Remove all untracked files and directories from your working copy. (DANGEROUS)." }
+        ]
+    },
+    {
+        "title": "Remote Repositories",
+        "commands": [
+            { "command": "git remote -v", "description": "List all configured remote repositories." },
+            { "command": "git pull", "description": "Fetch and merge changes from the remote server." },
+            { "command": "git push", "description": "Push committed changes to a remote repository." },
+            { "command": "git push origin [branch-name]", "description": "Push a specific branch to the remote 'origin'." },
+            { "command": "git push --force", "description": "Force a push. Required after `reset` or `amend` on a pushed branch (use with extreme caution)." }
+        ]
+    },
+    {
+        "title": "History & Diffs",
+        "commands": [
+            { "command": "git log", "description": "Show the commit history for the current branch." },
+            { "command": "git log --oneline", "description": "Show a condensed version of the commit history." },
+            { "command": "git diff", "description": "Show changes between working directory and staging area." },
+            { "command": "git diff --staged", "description": "Show changes between staging area and the last commit." }
+        ]
+    }
+]

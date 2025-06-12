@@ -1,0 +1,46 @@
+[
+    {
+        "title": "Package Management (APT)",
+        "commands": [
+            { "command": "sudo apt update", "description": "Refreshes package index from repositories in sources.list." },
+            { "command": "sudo apt upgrade", "description": "Upgrades all installed packages to their newest versions." },
+            { "command": "sudo apt install [package]", "description": "Install a new package." },
+            { "command": "sudo apt remove [package]", "description": "Remove a package from the system." },
+            { "command": "sudo apt autoremove", "description": "Remove automatically installed packages that are no longer needed." },
+            { "command": "apt search [keyword]", "description": "Search the repositories for a package." },
+            { "command": "sudo nano /etc/apt/sources.list", "description": "Manually edit the list of repositories. Run `apt update` after." },
+            { "command": "dpkg -l | grep '[name]'", "description": "Check if a specific package is installed using the low-level tool." }
+        ]
+    },
+    {
+        "title": "User & Permissions",
+        "commands": [
+            { "command": "su - [username]", "description": "Switch to another user account (the '-' provides a clean login shell)." },
+            { "command": "sudo adduser [username]", "description": "Use the interactive script to add a new user (recommended)." },
+            { "command": "sudo usermod -aG sudo [username]", "description": "Add an existing user to the 'sudo' group to grant admin rights." },
+            { "command": "sudo visudo", "description": "Safely edit the `/etc/sudoers` file. This is the required method." }
+        ]
+    },
+    {
+        "title": "Service Management (systemd)",
+        "commands": [
+            { "command": "sudo systemctl start [service]", "description": "Start a service immediately." },
+            { "command": "sudo systemctl stop [service]", "description": "Stop a running service." },
+            { "command": "sudo systemctl restart [service]", "description": "Stop and then start a service." },
+            { "command": "sudo systemctl enable [service]", "description": "Enable a service to automatically start at boot." },
+            { "command": "sudo systemctl disable [service]", "description": "Prevent a service from starting at boot." },
+            { "command": "sudo systemctl status [service]", "description": "Check the detailed status of a service." }
+        ]
+    },
+    {
+        "title": "Networking & Firewall (UFW)",
+        "commands": [
+            { "command": "sudo ufw status", "description": "Check the status of the Uncomplicated Firewall." },
+            { "command": "sudo ufw enable", "description": "Enable the firewall (it will persist on reboot)." },
+            { "command": "sudo ufw disable", "description": "Disable the firewall." },
+            { "command": "sudo ufw allow [port]/[tcp|udp]", "description": "Allow traffic on a port/protocol (e.g., `ufw allow 22/tcp`)." },
+            { "command": "sudo ufw deny [port]", "description": "Explicitly block traffic on a specific port." },
+            { "command": "sudo ufw delete allow [port]", "description": "Remove a previously added 'allow' rule." }
+        ]
+    }
+]

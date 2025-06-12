@@ -57,20 +57,23 @@ body.dark-theme .fa-moon { transform: translateY(100%) rotate(90deg); opacity: 0
 /* ======================================== */
 /* ===         MAIN LAYOUT CHANGES        === */
 /* ======================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
 /* --- Main Structure --- */
 .main-container {
-    max-width: 1200px; /* Increased max-width for the two-column layout */
+    max-width: 1200px;
     margin: 0 auto;
-    display: flex; /* The key! This enables Flexbox */
-    gap: 2em;      /* Space between the menu and the content */
+    display: flex;
+    gap: 2em;
     align-items: flex-start; /* Align items to the top */
 }
 
 /* The main content area will take up the remaining space */
 main {
     flex: 1; /* Allows this element to grow and fill available space */
-    min-width: 0; /* Fixes potential overflow issues in flex items */
+    min-width: 0;
 }
 
 /* --- Navigation Menu (NOW VERTICAL) --- */
@@ -111,6 +114,16 @@ nav ul {
     color: var(--nav-button-active-text);
 }
 
+td, th {
+    word-break: break-word;
+    white-space: normal;
+}
+
+code {
+    word-break: break-all;
+}
+
+
 
 /* --- Content Styles (Unchanged) --- */
 h1 { text-align: center; color: var(--text-main); margin-bottom: 1em; margin-top:0; font-size: 2.5em; }
@@ -136,12 +149,74 @@ code { font-family: 'Roboto Mono', monospace; background-color: var(--code-bg); 
 /* ===   RESPONSIVE DESIGN FOR MOBILE   === */
 /* ======================================== */
 @media (max-width: 800px) {
-    .main-container {
-        flex-direction: column; /* Stack the menu and content vertically */
+    body {
+        padding: 0;
     }
 
-    nav {
-        flex-basis: auto; /* Allow nav to take its content's height */
+    .main-container {
+        flex-direction: column;
         width: 100%;
+        padding: 0 1em;
+        box-sizing: border-box;
+    }
+
+    nav, main {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .table-container {
+        overflow-x: unset;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .command-group {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+
+    .command-group legend{
+        margin-left: 0;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 1em;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 0.5em;
+    }
+
+    td {
+        padding: 0.5em 0;
+        width: 100%;
+    }
+
+    td:first-child {
+        width: 100% !important;
+    }
+
+    td:first-child::before {
+        content: "Command:";
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.25em;
+    }
+
+    td:last-child::before {
+        content: "Description:";
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.25em;
     }
 }
